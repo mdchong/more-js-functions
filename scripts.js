@@ -4,17 +4,29 @@ function addToPage(string){
 }
 
 // let's write a function that accepts two arguments then adds them together. If the arguments aren't both numbers, concatenate that with the other argument and a space between the args, otherwise perform addition
-// TO DO
+function addTheValues(a, b) {
+    if (isNaN(a) || isNaN(b)) {
+        addToPage("One of the parameters is not a number, when added they eqaul " + a + " " + b);
+    } else {
+        addToPage("Both of the parameters are numbers, when added they equal " + (a + b));
+    }
+}
 
 // call the function a few times with different parameters
-// TO DO
+addTheValues(4, 5);
+addTheValues("Cat", 9);
+addTheValues(12, 9);
+addTheValues("My", "code!");
 
 // let's talk about scope and see it in action
 // function with a local variable to display to the screen
-// TO DO
+function scopeExample() {
+    let localVariable = "This is the localVariable of the scopeExample() function";
+    addToPage(localVariable);
+}
 
 // do functions execute when you don't call them?
-// TO DO
+// scopeExample()
 
 // this won't work because this variable does not exist outside of the scopeExample function
 // try to access that local variable from the previous function
@@ -22,44 +34,74 @@ function addToPage(string){
 
 
 // let's create a global score variable
-// TO DO
+let score = 0;
 
 // now let's write a function that will add two to the current score each time it's called
-// TO DO
+function scoreBasket() {
+    return score += 2;
+}
 
 // we could also have a function for a three-pointer
-// TO DO
+function scoreThree() {
+    return score += 3;
+}
 
 // now let's call that a couple of times, then write the current score to the page
-// TO DO
+scoreBasket();
+scoreBasket();
+scoreThree();
+addToPage("Current score is " + score);
 
 // don't forget, you can call a function that returns a value and assign that returned value to a variable
 // this function will double the parameter's value and return it
-// TO DO
+function doubleMyNumber(number) {
+    return number *= 2;
+}
 
 // let's create a number variable and initialize it to a value of 5
-// TO DO
+let number = 5;
 
 // now let's call doubleMyNumber and pass in number as the parameter, then assign the returned value back to number
-// TO DO
+number = doubleMyNumber(number);
 
 // and let's write that value to the page
-// TO DO
+addToPage("Current value of number is : " + number);
 
 // let's re-write that last function as an arrow function and use it to double the number variable again
-// TO DO
+let doubleMyNumberArrow = number => number *= 2;
 
 // now call that function again
-// TO DO
+number = doubleMyNumberArrow(number);
 
 // and write the value to the page again
-// TO DO
+addToPage("Current value of number is : " + number);
+addToPage("Number = " + number + " doubleMyNumber is: " + doubleMyNumberArrow(number));
+addToPage("The current value of number is: " + number);
 
 // write a function to convert an amount of change under one dollar 
 // to the number and type of coins needed to make that change
 // we will return the number of each type of coin in order using an array like this:
 // [quarters, dimes, nickels, pennies]
-// TO DO
+function calcChange(amount) {
+    let quarters = Math.floor(amount / 25);
+    amount = amount - (quarters * 25);
+
+    let dimes = Math.floor(amount / 10);
+    amount = amount - (dimes * 10);
+
+    let nickels = Math.floor(amount / 5);
+    amount = amount - (nickels * 5);
+    
+    let pennies = amount;
+    
+    return [quarters, dimes, nickels, pennies];
+}
+
+// See the amount of quarters inside the amount
+// See the left over and assign it in a variable
+
+// with the variable, see how many dimes and leave it as amount
+// 
 
 
 // practice from one of the zyBooks activities
@@ -77,22 +119,26 @@ function addToPage(string){
 // XXXXXX
 // XXXXXX
 // Convert into a drawBox function
-if(boxChar === undefined){
-    boxChar = "X";
-}
-// you could also write the code below to assign the value to the boxChar variable 
-// let boxChar = boxChar || "X";
-
-for (let r = 0; r < numRows; r++) {
-    let line = "";
-    for (let c = 0; c < numCols; c++) {
-        line += boxChar;
+function drawBox(numRows, numCols, boxChar) {
+    if(boxChar === undefined){
+        boxChar = "X";
     }
-    console.log(line);
+    // you could also write the code below to assign the value to the boxChar variable 
+    // let boxChar = boxChar || "X";
+
+    for (let r = 0; r < numRows; r++) {
+        let line = "";
+        for (let c = 0; c < numCols; c++) {
+            line += boxChar;
+        }
+        console.log(line);
+    }
 }
 
 // call our new function with different arguments
-// TO DO
+drawBox(3, 3, "@");
+drawBox(3, 3);
+drawBox(10, 2, "*");
 
 
 // ------------------------------------
